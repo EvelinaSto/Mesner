@@ -2,7 +2,7 @@
   "name": "elena-site",
   "private": true,
   "scripts": {
-    "build": "eleventy",
+    "build": "node build.js && eleventy && node build.js post",
     "start": "eleventy --serve"
   },
   "devDependencies": {

@@ -7,6 +7,11 @@
 <title>Админка сайта</title>
 </head>
 <body>
+<script>window.CMS_MANUAL_INIT = true;</script>
 <script src="/admin/decap-cms.js"></script>
+<script>
+  // Адрес сайта берётся автоматически — config.yml править не нужно
+  CMS.init({ config: { backend: { base_url: window.location.origin }, site_url: window.location.origin } });
+</script>
 </body>
 </html>
