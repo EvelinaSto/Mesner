@@ -1,0 +1,17 @@
+---
+layout: base.njk
+permalink: /level-up/
+eleventyComputed:
+  title: "{{ course.title }}"
+  description: "{{ course.sub }}"
+---
+{% import "macros.njk" as m %}
+<div class="chero"><div class="ring"></div><div class="ring"></div><div class="wrap"><span class="place" style="color:var(--gold2)">Курс для владельцев бьюти-студий в Германии</span><h1>{{ course.title }}</h1><p class="sub">{{ course.sub }}</p><p class="muted" style="max-width:36em">{{ course.intro }}</p>
+<div class="meta"><span>Формат: <b>{{ course.format }}</b></span><span><b>{{ course.modules | length }}</b> модулей</span><span>{{ course.start }}</span></div><a class="btn btn-gold" href="#apply">{{ course.cta }}</a></div></div>
+<section><div class="wrap two"><h2>Для кого этот курс</h2>{{ m.ticks(course.forWhom) }}</div></section>
+<section style="padding-top:0"><div class="wrap two"><div><h2>Программа</h2><p class="muted" style="margin-top:14px">Модули идут по порядку: от вашей позиции владельца — к студии, которая работает без вас.</p></div>{{ m.mods(course.modules) }}</div></section>
+<section style="padding-top:0"><div class="wrap"><h2>Форматы участия</h2><div class="tiers">{% for t in course.tiers %}<div class="tier{% if t.hot %} hot{% endif %}"><h3>{{ t.name }}</h3><div class="price">{{ t.price }}</div><ul>{% for f in t.features %}<li>{{ f }}</li>{% endfor %}</ul><a class="btn {% if t.hot %}btn-gold{% else %}btn-line{% endif %}" href="#apply" data-tier="{{ t.name }}">Выбрать</a></div>{% endfor %}</div></div></section>
+{{ m.cases(cases.items, false) }}
+{% if course.faq.length %}{% set faq = [] %}{% for f in course.faq %}{% set faq = (faq.push({t: f.q, d: f.a}), faq) %}{% endfor %}
+<section style="padding-top:0"><div class="wrap two"><h2>Вопросы</h2>{{ m.mods(faq, false) }}</div></section>{% endif %}
+{{ m.apply(site, "Курс " + course.title, "Заявка на " + course.title, "Напишите пару слов о своей студии — я отвечу лично и помогу выбрать формат.") }}

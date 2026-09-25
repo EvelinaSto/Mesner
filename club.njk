@@ -1,0 +1,11 @@
+---
+layout: base.njk
+permalink: /club/
+eleventyComputed:
+  title: "{{ club.title }}"
+  description: "{{ club.text }}"
+---
+{% import "macros.njk" as m %}
+<div class="chero"><div class="ring"></div><div class="wrap"><h1>{{ club.title }}</h1><p class="sub">{{ club.text }}</p><a class="btn btn-gold" href="#apply">{{ club.cta }}</a></div></div>
+<section><div class="wrap two"><h2>Что внутри</h2>{{ m.ticks(club.items) }}</div></section>
+{{ m.apply(site, club.title, "Хочу в " + club.title, "Расскажите о своей студии — пришлю условия вступления.") }}

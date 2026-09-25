@@ -1,0 +1,20 @@
+{% macro mods(items, numbered=true) %}
+<div class="mods">{% for m in items %}<div class="mod"><button type="button" aria-expanded="false" data-mod><span class="n">{% if numbered %}{{ loop.index | pad }}{% else %}?{% endif %}</span><span class="t">{{ m.t }}</span><span class="pl"></span></button><div class="d"><div>{{ m.d | br | safe }}</div></div></div>{% endfor %}</div>
+{% endmacro %}
+
+{% macro ticks(items) %}<ul class="ticks">{% for x in items %}<li>{{ x }}</li>{% endfor %}</ul>{% endmacro %}
+
+{% macro apply(site, ctx, title, text) %}
+<section class="apply" id="apply"><div class="wrap"><div><h2>{{ title }}</h2><p class="muted" style="margin-top:16px">{{ text }}</p></div>
+<form class="form" data-ctx="{{ ctx }}" data-wa="{{ site.whatsapp | digits }}" data-tg="{{ site.telegram }}" onsubmit="return false">
+<label>Имя<input name="name" required autocomplete="name"></label>
+<label>Город<input name="city" placeholder="Например, Hannover"></label>
+<label>Ваша ситуация<select name="stage"><option>Работаю мастером сама</option><option>Свой кабинет</option><option>Студия, 2–5 мастеров</option><option>Студия, 6+ мастеров</option><option>Только планирую студию</option></select></label>
+<label>Сообщение<textarea name="msg" placeholder="Что сейчас мешает студии расти?"></textarea></label>
+<div class="btns">{% if site.whatsapp %}<button class="btn btn-gold" data-send="wa">Отправить в WhatsApp</button>{% endif %}{% if site.telegram %}<button class="btn {% if site.whatsapp %}btn-line{% else %}btn-gold{% endif %}" data-send="tg">Отправить в Telegram</button>{% endif %}</div>
+<p class="note">Заявка откроется в мессенджере — останется нажать «Отправить».</p></form></div></section>
+{% endmacro %}
+
+{% macro cases(items, full) %}
+<section class="cases"><div class="wrap"><h2>{% if full %}Кейсы и результаты{% else %}Что меняется в студиях{% endif %}</h2><div class="grid">{% for c in items %}<div class="case"><h3>{{ c.t }}</h3><p class="muted">{{ c.d | br | safe }}</p></div>{% endfor %}</div>{% if not full %}<p style="margin-top:22px"><a href="/cases/">Все кейсы</a></p>{% endif %}</div></section>
+{% endmacro %}

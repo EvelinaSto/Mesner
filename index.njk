@@ -1,0 +1,15 @@
+---
+layout: base.njk
+---
+{% import "macros.njk" as m %}
+<section class="hero"><div class="wrap"><div><span class="place">{{ site.place }} 🇩🇪</span><h1>{{ site.tagline }}</h1><p class="lead">{{ site.lead }}</p>
+<div class="ctas"><a class="btn btn-gold" href="/level-up/">Узнать про {{ course.title }}</a>{% if site.telegram %}<a class="btn btn-line" href="{{ site.telegram }}" target="_blank" rel="noopener">Клиенты и клиентские дни в Telegram</a>{% endif %}</div></div>
+{% include "tube.njk" %}</div></section>
+<section class="pains"><div class="wrap"><h2>Узнаёте себя?</h2><div class="list">{% for p in home.pains %}<div class="pain"><q>{{ p.q }}</q><span>{{ p.s }}</span></div>{% endfor %}</div></div></section>
+<section class="deep"><div class="wrap"><div class="big">{{ course.title }}<small>{{ course.modules | length }} модулей для владельцев студий</small></div><div><h2>{{ course.sub }}</h2><p class="muted">{{ course.intro }}</p><a class="btn btn-gold" href="/level-up/">Смотреть программу</a></div></div></section>
+<section class="about"><div class="wrap"><div class="photo">{% if site.photo %}<img src="{{ site.photo }}" alt="{{ site.brand }}" loading="lazy">{% else %}<span class="mono">{{ site.brand | first }}</span>{% endif %}</div>
+<div><h2>{{ site.aboutTitle }}</h2><div class="muted">{{ site.aboutText | paras | safe }}</div><div class="facts">{% for f in site.facts %}<span>{{ f }}</span>{% endfor %}</div></div></div></section>
+{% set offers = landings | values | published %}
+{% if offers.length %}<section class="offers"><div class="wrap"><h2>Сейчас открыто</h2>{% for l in offers %}<a class="row" href="/l/{{ l.url }}/"><span class="date">{{ l.date or l.tag }}</span><div><h3>{{ l.title }}</h3><p class="muted">{{ l.sub }}</p></div><span class="btn btn-line btn-sm">{{ l.cta }}</span></a>{% endfor %}</div></section>{% endif %}
+{{ m.cases(cases.items, false) }}
+{{ m.apply(site, "Главная страница", "Хотите, чтобы студия работала сама?", "Оставьте заявку — я отвечу лично и подскажу, с чего начать именно вам.") }}

@@ -1,0 +1,12 @@
+{% set levels = ["Мастер на себя","Свой кабинет","Первый сотрудник","Полная запись","Команда и стандарты","Цифры под контролем","Владелец, не мастер","Студия работает сама"] %}
+<div class="tube-box" aria-hidden="true"><svg viewBox="0 0 420 500"><defs>
+<clipPath id="tc"><rect x="48" y="40" width="68" height="430" rx="34"/></clipPath>
+<linearGradient id="lg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#EFD9A0"/><stop offset="1" stop-color="#A8803A"/></linearGradient></defs>
+<rect class="tube-glass" x="48" y="40" width="68" height="430" rx="34"/>
+<g clip-path="url(#tc)"><rect class="liquid" x="48" y="76" width="68" height="394" fill="url(#lg)"/>
+<circle class="bub" cx="70" cy="460" r="3" style="animation-delay:3.4s"/><circle class="bub" cx="88" cy="460" r="5" style="animation-delay:4.5s"/><circle class="bub" cx="76" cy="460" r="3" style="animation-delay:5.6s"/><circle class="bub" cx="95" cy="460" r="3" style="animation-delay:4s"/><circle class="bub" cx="82" cy="460" r="5" style="animation-delay:5.1s"/></g>
+<rect x="40" y="30" width="84" height="14" rx="7" fill="var(--ink)"/>
+<rect x="60" y="60" width="6" height="350" rx="3" fill="#fff" opacity=".35"/>
+{% for t in levels %}{% set y = 450 - loop.index0 * 57.14 %}{% set dl = 0.5 + loop.index0 * 0.38 %}
+<g class="lv{% if loop.last %} top{% endif %}"><line x1="118" x2="142" y1="{{ y }}" y2="{{ y }}"/><text class="num" x="152" y="{{ y + 6 }}" style="animation-delay:{{ dl }}s">{{ loop.index }}.0</text><text x="200" y="{{ y + 5 }}" style="animation-delay:{{ dl }}s">{{ t }}</text></g>{% endfor %}
+</svg></div>

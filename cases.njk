@@ -1,0 +1,8 @@
+---
+layout: base.njk
+permalink: /cases/
+title: Кейсы
+---
+{% import "macros.njk" as m %}
+{{ m.cases(cases.items, true) }}
+{{ m.apply(site, "Кейсы", "Хотите такой же результат?", "Расскажите о своей студии.") }}

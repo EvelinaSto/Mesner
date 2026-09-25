@@ -1,0 +1,137 @@
+# ─── ЗАПОЛНИТЕ 2 СТРОКИ НИЖЕ (см. инструкцию) ───
+backend:
+  name: github
+  repo: ВАШ-GITHUB-ЛОГИН/elena-site   # например: storm-evelina/elena-site
+  branch: main
+  base_url: https://ИМЯ-ПРОЕКТА.pages.dev   # адрес сайта в Cloudflare Pages
+  auth_endpoint: api/auth
+  commit_messages:
+    update: "Правка: {{collection}} / {{slug}}"
+    create: "Новое: {{collection}} / {{slug}}"
+    delete: "Удалено: {{collection}} / {{slug}}"
+    uploadMedia: "Фото: {{path}}"
+    deleteMedia: "Удалено фото: {{path}}"
+
+locale: ru
+site_url: https://ИМЯ-ПРОЕКТА.pages.dev
+media_folder: src/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: pages
+    label: Страницы
+    editor: { preview: false }
+    files:
+      - name: site
+        label: Сайт и контакты
+        file: src/_data/site.json
+        fields:
+          - { name: brand, label: "Имя / бренд" }
+          - { name: tagline, label: "Главный заголовок" }
+          - { name: lead, label: "Подзаголовок", widget: text }
+          - { name: place, label: "Подпись над заголовком" }
+          - { name: telegram, label: "Telegram (ссылка)", required: false }
+          - { name: whatsapp, label: "WhatsApp (номер, например +49 151 ...)", required: false, hint: "Заявки с сайта уходят в WhatsApp и/или Telegram" }
+          - { name: instagram, label: "Instagram (ссылка)", required: false }
+          - { name: email, label: "E-mail", required: false }
+          - { name: photo, label: "Фото на главной", widget: image, required: false }
+          - { name: aboutTitle, label: "Заголовок «Обо мне»" }
+          - { name: aboutText, label: "Текст «Обо мне»", widget: text, hint: "Пустая строка — новый абзац" }
+          - { name: facts, label: "Факты-плашки", widget: list, field: { name: f, label: "Факт" } }
+          - { name: studio, label: "Название студии", required: false }
+          - { name: url, label: "Адрес сайта (для Google)", hint: "Например https://elena-mesner.de — без / в конце" }
+          - { name: impressum, label: "Impressum", widget: text }
+          - { name: datenschutz, label: "Datenschutzerklärung", widget: text }
+      - name: home
+        label: Главная — «Узнаёте себя?»
+        file: src/_data/home.json
+        fields:
+          - name: pains
+            label: Боли клиентов
+            widget: list
+            fields:
+              - { name: q, label: "Цитата" }
+              - { name: s, label: "Пояснение" }
+      - name: course
+        label: Курс Level Up
+        file: src/_data/course.json
+        fields:
+          - { name: title, label: "Название" }
+          - { name: sub, label: "Подзаголовок" }
+          - { name: intro, label: "Описание", widget: text }
+          - { name: start, label: "Старт / дата" }
+          - { name: format, label: "Формат" }
+          - { name: cta, label: "Текст кнопки" }
+          - { name: forWhom, label: "Для кого", widget: list, field: { name: x, label: "Пункт" } }
+          - name: modules
+            label: Модули программы
+            widget: list
+            fields:
+              - { name: t, label: "Название модуля" }
+              - { name: d, label: "Описание", widget: text }
+          - name: tiers
+            label: Тарифы
+            widget: list
+            fields:
+              - { name: name, label: "Название" }
+              - { name: price, label: "Цена" }
+              - { name: features, label: "Что входит", widget: list, field: { name: f, label: "Пункт" } }
+              - { name: hot, label: "Выделить тариф", widget: boolean, default: false }
+          - name: faq
+            label: Вопросы и ответы
+            widget: list
+            fields:
+              - { name: q, label: "Вопрос" }
+              - { name: a, label: "Ответ", widget: text }
+      - name: club
+        label: Клуб
+        file: src/_data/club.json
+        fields:
+          - { name: title, label: "Название" }
+          - { name: text, label: "Описание", widget: text }
+          - { name: items, label: "Что внутри", widget: list, field: { name: x, label: "Пункт" } }
+          - { name: cta, label: "Текст кнопки" }
+      - name: cases
+        label: Кейсы
+        file: src/_data/cases.json
+        fields:
+          - name: items
+            label: Кейсы
+            widget: list
+            fields:
+              - { name: t, label: "Заголовок" }
+              - { name: d, label: "Описание", widget: text }
+
+  - name: landings
+    label: Лендинги
+    label_singular: лендинг
+    folder: src/_data/landings
+    create: true
+    delete: true
+    format: json
+    extension: json
+    identifier_field: title
+    slug: "{{fields.url}}"
+    summary: "{{title}} — /l/{{url}}/"
+    editor: { preview: false }
+    fields:
+      - { name: url, label: "Адрес страницы", hint: "Только латиница, цифры и дефис. Страница будет по адресу /l/адрес/", pattern: ["^[a-z0-9-]+$", "Только латиница, цифры и дефис"] }
+      - { name: tag, label: "Метка над заголовком", required: false }
+      - { name: title, label: "Заголовок" }
+      - { name: sub, label: "Подзаголовок", widget: text }
+      - { name: date, label: "Дата", required: false }
+      - { name: price, label: "Цена", required: false }
+      - { name: cta, label: "Текст кнопки", default: "Оставить заявку" }
+      - { name: theme, label: "Цвет", widget: select, default: rose, options: [{ label: "Розовый", value: rose }, { label: "Золото", value: gold }, { label: "Слива", value: plum }, { label: "Лаборатория (бирюза)", value: lab }] }
+      - { name: image, label: "Картинка", widget: image, required: false }
+      - { name: forWhom, label: "Для кого", widget: list, required: false, field: { name: x, label: "Пункт" } }
+      - { name: get, label: "Что вы получите", widget: list, required: false, field: { name: x, label: "Пункт" } }
+      - name: program
+        label: Программа
+        widget: list
+        required: false
+        fields:
+          - { name: t, label: "Название" }
+          - { name: d, label: "Описание", widget: text, required: false }
+      - { name: menu, label: "Показывать в меню", widget: boolean, default: false }
+      - { name: published, label: "Опубликован (виден посетителям)", widget: boolean, default: false }

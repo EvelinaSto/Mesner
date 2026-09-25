@@ -1,0 +1,23 @@
+{
+  "brand": "Елена Меснер",
+  "tagline": "Бьюти-студия в Германии, которая работает сама",
+  "lead": "Помогаю владельцам загружать студию клиентами и управлять выручкой, а не ждать «сезона». Система, команда, цифры и свобода владельца.",
+  "place": "Beauty-бизнес в Германии",
+  "studio": "Blossom",
+  "telegram": "https://t.me/+E5Y5wjZoJhU4Y2Fi",
+  "whatsapp": "",
+  "instagram": "https://instagram.com/elena_mesner",
+  "email": "",
+  "photo": "/images/uploads/elena.jpg",
+  "aboutTitle": "Я прошла путь от мастера до владельца студии",
+  "aboutText": "Меня зовут Елена Меснер, я владелица студии Blossom в Германии. Я знаю, как это: запись на три месяца вперёд — и ни сил, ни свободы. Знаю, как искать мастеров, когда их нет, и как пережить «слабый ноябрь».\n\nТеперь я помогаю владельцам студий выстроить систему: клиенты, сотрудники, документы и деньги — так, чтобы студия работала и без вас в кресле.",
+  "facts": [
+    "Владелица студии Blossom",
+    "Beauty-бизнес в Германии",
+    "Разборы реальных студий",
+    "Level Up Club"
+  ],
+  "url": "https://ИМЯ-ПРОЕКТА.pages.dev",
+  "datenschutz": "Hier die Datenschutzerklärung einfügen.\n\nErstellen Sie den Text z. B. mit einem Generator (e-recht24.de oder datenschutz-generator.de) und berücksichtigen Sie dabei: Hosting bei Cloudflare Pages, Links zu WhatsApp, Telegram und Instagram. Die Website setzt keine Cookies und lädt keine externen Schriften.",
+  "impressum": "Angaben gemäß § 5 DDG\n\n[Vor- und Nachname]\n[Straße, Hausnummer]\n[PLZ Ort]\n\nKontakt:\nE-Mail: [E-Mail]\nTelefon: [Telefon]\n\n[USt-IdNr., falls vorhanden]"
+}

@@ -1,0 +1,23 @@
+---
+layout: base.njk
+pagination:
+  data: landings
+  size: 1
+  alias: l
+  resolve: values
+  before: function(d) { return d.filter(x => x.published); }
+permalink: "/l/{{ l.url }}/"
+eleventyComputed:
+  title: "{{ l.title }}"
+  description: "{{ l.sub }}"
+---
+{% import "macros.njk" as m %}
+<div class="lp" data-t="{{ l.theme }}">
+<div class="lhero"><div class="wrap">{% if l.tag %}<span class="tag">{{ l.tag }}</span>{% endif %}<h1>{{ l.title }}</h1><p class="sub">{{ l.sub | br | safe }}</p>
+<a class="btn" href="#apply">{{ l.cta }}</a><div class="facts">{% if l.date %}<span>📅 {{ l.date }}</span>{% endif %}{% if l.price %}<span>{{ l.price }}</span>{% endif %}</div>
+{% if l.image %}<div class="limg"><img src="{{ l.image }}" alt=""></div>{% endif %}</div></div>
+{% if l.forWhom and l.forWhom.length %}<section><div class="wrap two"><h2>Для кого</h2>{{ m.ticks(l.forWhom) }}</div></section>{% endif %}
+{% if l.get and l.get.length %}<section><div class="wrap two"><h2>Что вы получите</h2>{{ m.ticks(l.get) }}</div></section>{% endif %}
+{% if l.program and l.program.length %}<section><div class="wrap two"><h2>Программа</h2>{{ m.mods(l.program) }}</div></section>{% endif %}
+{{ m.apply(site, l.title, l.cta, "Оставьте контакты — я свяжусь с вами лично.") }}
+</div>
