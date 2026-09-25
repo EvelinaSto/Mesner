@@ -8,6 +8,7 @@ const cp = (from, to) => { mk(path.dirname(to)); fs.copyFileSync(from, to); };
 
 if (step === "post") {
   cp("_worker.js", "_site/_worker.js");
+  fs.writeFileSync("_site/.assetsignore", "_worker.js\n");
   console.log("worker copied");
   process.exit(0);
 }
